@@ -24,6 +24,7 @@ public class UsualPerson implements Person {
     private boolean isProgrammer;
     private List<String> contacts;
 
+    @Override
     public void sayHello(Person person) {
     }
 }
