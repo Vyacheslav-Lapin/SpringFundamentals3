@@ -48,6 +48,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <version>LATEST</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
