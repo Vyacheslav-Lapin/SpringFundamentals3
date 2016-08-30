@@ -10,11 +10,12 @@
 
     <bean id="person" class="lab.model.UsualPerson"
           p:name="John Smith"
-          p:age="35"
-          p:country-ref="country"/>
-
-    <bean id="country" class="lab.model.Country"
-          c:id="1"
-          c:name="Russia"
-          c:codeName="RU"/>
+          p:age="35">
+        <property name="country">
+            <bean class="lab.model.Country"
+                  c:id="1"
+                  c:name="Russia"
+                  c:codeName="RU"/>
+        </property>
+    </bean>
 </beans>
