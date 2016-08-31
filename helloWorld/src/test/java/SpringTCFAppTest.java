@@ -1,9 +1,10 @@
 import lab.model.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 @ContextConfiguration("classpath:application-context.xml")
 public class SpringTCFAppTest {
 	
-	@Autowired
+	@Resource
 	private Person person;
 
 	private Person expectedPerson = TestUtils.getExpectedPerson();

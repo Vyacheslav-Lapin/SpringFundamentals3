@@ -8,14 +8,24 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <bean id="person2" class="lab.model.UsualPerson"/>
+
     <bean id="person" class="lab.model.UsualPerson"
           p:name="John Smith"
-          p:age="35">
+          p:age="35"
+          p:height="1.78"
+          p:programmer="true">
         <property name="country">
             <bean class="lab.model.Country"
                   c:id="1"
                   c:name="Russia"
                   c:codeName="RU"/>
+        </property>
+        <property name="contacts">
+            <list>
+                <value>asd@asd.ru</value>
+                <value>+7-234-456-67-89</value>
+            </list>
         </property>
     </bean>
 </beans>
