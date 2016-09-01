@@ -10,8 +10,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <context:component-scan base-package="lab.model"/>
-    <context:property-placeholder location="person.properties"/>
+    <!--<context:component-scan base-package="lab.model"/>-->
+    <!--<context:property-placeholder location="person.properties"/>-->
 
     <util:list id="contacts" value-type="java.lang.String">
         <value>asd@asd.ru</value>
@@ -20,22 +20,22 @@
 
 <!--<bean id="person2" class="lab.model.UsualPerson"/>-->
 
-    <bean id="person" class="lab.model.UsualPerson"
-          p:name="${name}"
-          p:age="${age}"
-          p:height="${height}"
-          p:programmer="${programmer}">
-        <property name="country">
-            <bean class="lab.model.Country"
-                  c:id="1"
-                  c:name="Russia"
-                  c:codeName="RU"/>
-        </property>
-        <property name="contacts">
-            <list>
-                <value>asd@asd.ru</value>
-                <value>+7-234-456-67-89</value>
-            </list>
-        </property>
-    </bean>
+    <!--<bean id="person" class="lab.model.UsualPerson"-->
+          <!--p:name="${name}"-->
+          <!--p:age="${age}"-->
+          <!--p:height="${height}"-->
+          <!--p:programmer="${programmer}">-->
+        <!--<property name="country">-->
+            <!--<bean class="lab.model.Country"-->
+                  <!--c:id="1"-->
+                  <!--c:name="Russia"-->
+                  <!--c:codeName="RU"/>-->
+        <!--</property>-->
+        <!--<property name="contacts">-->
+            <!--<list>-->
+                <!--<value>asd@asd.ru</value>-->
+                <!--<value>+7-234-456-67-89</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
 </beans>
