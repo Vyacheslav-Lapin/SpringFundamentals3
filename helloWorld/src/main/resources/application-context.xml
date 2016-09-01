@@ -8,14 +8,14 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-        ">
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
     <context:component-scan base-package="lab.model"/>
 
-    <!--<util:list id="contacts" value-type="java.lang.String">-->
-        <!--<value>asd@asd.ru</value>-->
-        <!--<value>+7-234-456-67-89</value>-->
-    <!--</util:list>-->
+    <util:list id="contacts" value-type="java.lang.String">
+        <value>asd@asd.ru</value>
+        <value>+7-234-456-67-89</value>
+    </util:list>
 
 <!--<bean id="person2" class="lab.model.UsualPerson"/>-->
 

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import javax.persistence.*;
 import java.util.List;
 
@@ -38,6 +39,7 @@ public class UsualPerson implements Person {
     @Value("true")
     private boolean isProgrammer;
 
+    @Resource
     private List<String> contacts;
 
     @Override
