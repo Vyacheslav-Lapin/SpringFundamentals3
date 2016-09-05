@@ -13,6 +13,10 @@
     <!--<context:component-scan base-package="lab.model"/>-->
     <!--<context:property-placeholder location="person.properties"/>-->
 
+    <!--
+	    <aop:aspectj-autoproxy />
+    -->
+
     <bean id="bar" class="lab.model.ApuBar" />
 
     <bean id="customer" class="lab.model.Customer">
