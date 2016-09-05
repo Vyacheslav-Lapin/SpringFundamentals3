@@ -23,8 +23,9 @@ public class Customer implements Person {
         this.broke = broke;
     }
 
-    public void setName(String name) {
+    public Customer setName(String name) {
         this.name = name;
+        return this;
     }
 
     public void sayHello(Person person) {

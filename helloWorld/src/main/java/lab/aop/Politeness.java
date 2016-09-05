@@ -1,6 +1,5 @@
 package lab.aop;
 
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -10,12 +9,14 @@ import lab.model.Squishee;
 @Aspect
 public class Politeness {
 
-    @Before("execution(* sellSquishee(..))")
+    private static final String POINTCUT_SQUISHEE = "execution(* sellSquishee(..))";
+
+    @Before(POINTCUT_SQUISHEE)
     public void sayHello(JoinPoint joinPiont) {
         AopLog.append("Hello " + ((Customer) joinPiont.getArgs()[0]).getName() + ". How are you doing? \n");
     }
 
-    @AfterReturning(pointcut = "execution(* sellSquishee(..))",
+    @AfterReturning(pointcut = POINTCUT_SQUISHEE,
             returning = "retVal", argNames = "retVal")
     public void askOpinion(Object retVal) {
         AopLog.append("Is " + ((Squishee) retVal).getName() + " Good Enough? \n");
@@ -25,10 +26,12 @@ public class Politeness {
         AopLog.append("Hmmm... \n");
     }
 
+    @After(POINTCUT_SQUISHEE)
     public void sayGoodBye() {
         AopLog.append("Good Bye! \n");
     }
 
+    @Around(POINTCUT_SQUISHEE)
     public Object sayPoliteWordsAndSell(ProceedingJoinPoint pjp) throws Throwable {
         AopLog.append("Hi! \n");
         Object retVal = pjp.proceed();
