@@ -13,6 +13,15 @@
     <!--<context:component-scan base-package="lab.model"/>-->
     <!--<context:property-placeholder location="person.properties"/>-->
 
+    <bean id="bar" class="lab.model.ApuBar" />
+
+    <bean id="customer" class="lab.model.Customer">
+        <property name="name" value="Homer" />
+        <property name="broke" value="false" />
+    </bean>
+
+    <bean id="politeness" class="lab.aop.Politeness"/>
+
     <util:list id="contacts" value-type="java.lang.String">
         <value>asd@asd.ru</value>
         <value>+7-234-456-67-89</value>
