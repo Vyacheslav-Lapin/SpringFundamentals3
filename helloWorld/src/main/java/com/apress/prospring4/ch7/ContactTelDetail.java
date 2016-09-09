@@ -1,5 +1,10 @@
 package com.apress.prospring4.ch7;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -7,74 +12,33 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "contact_tel_detail")
+@NoArgsConstructor
+@ToString
+@Getter
+@Setter
 public class ContactTelDetail implements Serializable {
-    private Long id;
-    private int version;
-    private String telType;
-    private String telNumber;
-    private Contact contact;
-
-    public ContactTelDetail() {
-    }
-
-    public ContactTelDetail(String telType, String telNumber) {
-        this.telType = telType;
-        this.telNumber = telNumber;
-    }
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "ID")
-    public Long getId() {
-        return this.id; 
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Long id;
 
     @Version
     @Column(name = "VERSION")
-    public int getVersion() {
-        return this.version;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
+    private int version;
 
     @Column(name = "TEL_TYPE")
-    public String getTelType() {
-        return this.telType;
-    } 
-
-    public void setTelType(String telType) {
-        this.telType = telType;
-    }
+    private String telType;
 
     @Column(name = "TEL_NUMBER")
-    public String getTelNumber() {
-        return this.telNumber;
-    }
-
-    public void setTelNumber(String telNumber) {
-        this.telNumber = telNumber;
-    }
+    private String telNumber;
 
     @ManyToOne
     @JoinColumn(name = "CONTACT_ID")
-    public Contact getContact() {
-        return this.contact;
-    }
+    private Contact contact;
 
-    public void setContact(Contact contact) {
-        this.contact = contact;
-    }
-
-    @Override
-    public String toString() {
-        return "Contact Tel Detail - Id: " + id + ", Contact id: " 
-            + getContact().getId() + ", Type: " 
-            + telType + ", Number: " + telNumber;
+    public ContactTelDetail(String telType, String telNumber) {
+        this.telType = telType;
+        this.telNumber = telNumber;
     }
 }

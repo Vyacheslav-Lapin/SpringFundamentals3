@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ContactDao {
 
-    List findAll();
+    List<Contact> findAll();
 
     default List<Contact> findAllWithDetail() {
         return findAll();

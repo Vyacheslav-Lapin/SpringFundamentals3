@@ -1,23 +1,24 @@
 package com.apress.prospring4.ch7;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
 import java.util.List;
-import java.util.Date;
-import java.util.Set;
 
-import org.springframework.context.support.GenericXmlApplicationContext;
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:application-context.xml")
+public class ContactTest {
 
-public class SpringHibernateSample {
-    public static void main(String[] args) {
-        GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:META-INF/spring/app-context-annotation.xml");
-        ctx.refresh();
+    @Resource
+    private ContactDao contactDao;
 
-        ContactDao contactDao = ctx.getBean("contactDao", ContactDao.class);
-
-        Contact contact = contactDao.findById(1l);
-
+    @Test
+    public void mainTest() throws Exception {
+        Contact contact = contactDao.findById(1L);
         contactDao.delete(contact);
-
         listContactsWithDetail(contactDao.findAllWithDetail());
     }
 
@@ -29,8 +30,8 @@ public class SpringHibernateSample {
             System.out.println(contact);
 
             if (contact.getContactTelDetails() != null) {
-                for (ContactTelDetail contactTelDetail: 
-                         contact.getContactTelDetails()) {
+                for (ContactTelDetail contactTelDetail:
+                        contact.getContactTelDetails()) {
                     System.out.println(contactTelDetail);
                 }
             }
