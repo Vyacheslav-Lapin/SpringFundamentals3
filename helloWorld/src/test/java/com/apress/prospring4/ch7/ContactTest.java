@@ -1,5 +1,9 @@
 package com.apress.prospring4.ch7;
 
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -17,6 +21,15 @@ public class ContactTest {
 
     @Test
     public void mainTest() throws Exception {
+
+        // http://stackoverflow.com/questions/21282432/hibernateexception-access-to-dialectresolutioninfo-cannot-be-null-when-hiberna
+        Configuration configuration = new Configuration();
+        configuration.configure("com/jeecourse/config/hibernate.cfg.xml");
+
+        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(
+                configuration.getProperties()).build();
+        SessionFactory sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+
         Contact contact = contactDao.findById(1L);
         contactDao.delete(contact);
         listContactsWithDetail(contactDao.findAllWithDetail());
