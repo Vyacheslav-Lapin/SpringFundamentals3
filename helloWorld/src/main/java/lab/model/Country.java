@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
@@ -14,14 +15,20 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Component
+@Entity
+@Table(name = "COUNTRY")
 public class Country implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Value("1")
 	private int id;
 
+    @Column
     @Value("Russia")
     private String name;
 
+    @Column(name="code_name")
     @Value("RU")
     private String codeName;
 
