@@ -32,16 +32,26 @@ public class CountryJpaDaoImpl extends AbstractJpaDao implements CountryDao {
             TypedQuery<Country> query = em.createQuery("from lab.model.Country", Country.class);
             return query.getResultList();
         } finally {
-            assert em != null;
-            em.close();
+            if (em != null)
+                em.close();
         }
-    }// getAllcountries()
+    }
 
     @Override
     public Country getCountryByName(String name) {
-//		TODO: Implement it
-
-        return null;
+        EntityManager em = null;
+        try {
+            em = emf.createEntityManager();
+            return em
+                    .createQuery(
+                            "SELECT c FROM lab.model.Country c WHERE c.name LIKE :name",
+                            Country.class)
+                    .setParameter("name", name)
+                    .getSingleResult();
+        } finally {
+            if (em != null)
+                em.close();
+        }
     }
 
 }

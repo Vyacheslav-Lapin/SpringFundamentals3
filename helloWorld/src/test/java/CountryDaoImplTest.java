@@ -1,17 +1,18 @@
-import static org.junit.Assert.assertEquals;
-
-import java.util.List;
-
 import lab.dao.CountryDao;
 import lab.model.Country;
-
-//import org.apache.commons.logging.Log;
-//import org.apache.commons.logging.LogFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
+//import org.apache.commons.logging.Log;
+//import org.apache.commons.logging.LogFactory;
 
 /**
  * Illustrates basic use of Hibernate as a JPA provider.
@@ -38,6 +39,7 @@ public class CountryDaoImplTest {
 	}
 
 	@Test
+	@Order(value = 2)
 	public void testGtAllCountries() {
 
 		countryDao.save(new Country("Canada", "CA"));
@@ -47,8 +49,9 @@ public class CountryDaoImplTest {
 	}
 
 	@Test
+	@Order(value = 3)
 	public void testGetCountryByName() {
-
+		testSaveCountry();
 		Country country = countryDao.getCountryByName("Australia");
 		assertEquals(exampleCountry, country);
 	}
