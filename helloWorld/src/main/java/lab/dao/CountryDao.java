@@ -1,10 +1,18 @@
 package lab.dao;
 
+import java.util.List;
+
 import lab.model.Country;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+
+public interface CountryDao {
+
+	public abstract void save(Country country);
+
+	public abstract List<Country> getAllCountries();
+
+	public abstract Country getCountryByName(String name);
+
+}e.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 

@@ -36,7 +36,7 @@ public class ContactTest {
     }
 
     private static void listContactsWithDetail(List<Contact> contacts) {
-        System.out.println("");
+        System.out.println();
         System.out.println("Listing contacts with details:");
 
         for (Contact contact: contacts) {
