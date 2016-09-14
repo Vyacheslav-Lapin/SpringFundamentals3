@@ -23,6 +23,8 @@
         p:dataSource-ref="dataSource"/>
 
     <tx:annotation-driven/>
+
+    <bean id="countryService" class="lab.service.CountryServiceImpl"/>
  
     <bean id="countryDao" class="lab.dao.CountryDao">
         <property name="dataSource" ref="dataSource"/>
