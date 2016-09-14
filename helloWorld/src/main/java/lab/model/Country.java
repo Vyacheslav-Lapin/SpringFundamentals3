@@ -1,39 +1,75 @@
 package lab.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-import javax.persistence.*;
 import java.io.Serializable;
 
-@Data
-@EqualsAndHashCode(exclude = "id")
-@NoArgsConstructor
-@AllArgsConstructor
-@Component
-@Entity
-@Table(name = "COUNTRY")
-public class Country implements Serializable {
+public class Country implements Serializable{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Value("1")
+	private static final long serialVersionUID = 1L;
+
 	private int id;
 
-    @Column
-    @Value("Russia")
     private String name;
 
-    @Column(name="code_name")
-    @Value("RU")
     private String codeName;
+
+    public Country() {
+    }
+
+    public Country(int id, String name, String codeName) {
+        this.id = id;
+        this.name = name;
+        this.codeName = codeName;
+    }
 
     public Country(String name, String codeName) {
         this.name = name;
         this.codeName = codeName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCodeName() {
+        return codeName;
+    }
+
+    public void setCodeName(String codeName) {
+        this.codeName = codeName;
+    }
+
+    public String toString() {
+        return id + ". " + name + " (" + codeName + ")";
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Country country = (Country) o;
+
+        if (codeName != null ? !codeName.equals(country.codeName) : country.codeName != null) return false;
+        if (name != null ? !name.equals(country.name) : country.name != null) return false;
+
+        return true;
+    }
+
+    public int hashCode() {
+        int result = 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (codeName != null ? codeName.hashCode() : 0);
+        return result;
     }
 }
